@@ -1,101 +1,134 @@
 import Image from "next/image";
+import Link from "next/link";
+import nikeBanner from "@public/images/nike-banner.jpg";
+import featureBanner from "@public/images/featured-banner.jpg";
+import dontMissBanner from "@public/images/dont-miss-banner.jpg";
+import mensThumbnail from "@public/images/categories-thumbnail/mens-thumbnail.jpg";
+import womensThumbnail from "@public/images/categories-thumbnail/womens-thumbnail.jpg";
+import kidsThumbnail from "@public/images/categories-thumbnail/kids-thumbnail.jpg";
+import Button from "./components/Button";
+import BannerSection from "./components/BannerSection";
+import ProductSlider from "./components/ProductSlider";
+import ShopMensSlider from "./components/ShopMensSlider";
+import ShopWomensSlider from "./components/ShopWomensSlider";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="text-black"><Header/>
+      <div className="flex items-center flex-col bg-light-gray py-2 px-10 md:px-0 text-black">
+        <h2>Hello Nike App</h2>
+        <p>
+          Download the app to access everything Nike.
+          <Link href="#">Get Your Great</Link>
+        </p>
+      </div>
+      <section className="px-10">
+        <Image src={nikeBanner} alt="" />
+        <div className="flex flex-col items-center py-10 text-black">
+          <h3>First Look</h3>
+          <h2 className="text-5xl uppercase pt-2 text-center">Nike Air Max Pulse</h2>
+          <p className="w-full md:w-1/2 text-center py-6">
+            Extreme comfort. Hyper durable. Max volume. Introducing the Air Max
+            Pulse —designed to push you past your limits and help you go to the
+            max.
+          </p>
+          <div className='flex gap-2'>
+              <Button text="Notify Me" classNames="rounded-full py-2"/>
+              <Button text="Shop Air Max" classNames="rounded-full py-2"/>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+      <section className="px-10">
+          <ProductSlider/>
+      </section>
+      <BannerSection heading="Featured" imageUrl={featureBanner} imageAlt="Feature Banner" secondHeading="STEP INTO WHAT FEELS GOOD" para="Cause everyone should know the feeling of running in that perfect pair." buttonText="Find Your Shoe"/>
+      <section className="px-10">
+        <h2 className="font-bold text-black">Gear Up</h2>
+        <div className="grid grid-cols-12">
+          <div className="col-span-12 md:col-span-6">
+            <ShopMensSlider/>
+          </div>
+          <div className="col-span-12 md:col-span-6">
+            <ShopWomensSlider/>
+          </div>
+        </div>
+      </section>
+      <BannerSection heading="Don't Miss" imageUrl={dontMissBanner} imageAlt="Dont Miss Banner" secondHeading="FLIGHT ESSENTIALS" para="Your built-to-last, all-week wears—but with style only Jordan Brand can deliver." buttonText="Shop"/>
+      <section className="px-10">
+        <h2 className="mb-4 font-bold text-black">The Essentials</h2>
+        <div className="grid grid-cols-12 gap-4">
+          <div className="col-span-12 md:col-span-4 m-auto relative">
+            <Image src={mensThumbnail} alt="Mens Thumbnail"/>
+            <div className="absolute bottom-10 left-8">
+              <button className="bg-white px-6 py-2 rounded-full text-black">Men's</button>
+            </div>
+          </div>
+          <div className="col-span-12 md:col-span-4 m-auto relative">
+            <Image src={womensThumbnail} alt="Womens Thumbnail"/>
+            <div className="absolute bottom-10 left-8">
+              <button className="bg-white px-6 py-2 rounded-full text-black">Women's</button>
+            </div>
+          </div>
+          <div className="col-span-12 md:col-span-4 m-auto relative">
+            <Image src={kidsThumbnail} alt="Kids Thumbnail"/>
+            <div className="absolute bottom-10 left-8">
+              <button className="bg-white px-6 py-2 rounded-full text-black">Kid's</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-10 px-10">
+          <div className="max-w-screen-xl mx-auto px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 px-0 lg:px-20">
+              {/* Icons */}
+              <div>
+                <h3 className="text-lg font-semibold mb-4 text-black">Icons</h3>
+                <ul className="space-y-2 text-black">
+                  <li><Link href="#" className="text-text-primary-gray">Air Force 1</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Huarache</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Air Max 90</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Air Max 95</Link></li>
+                </ul>
+              </div>
+
+              {/* Shoes */}
+              <div>
+                <h3 className="text-lg font-semibold mb-4 text-black">Shoes</h3>
+                <ul className="space-y-2 text-black">
+                  <li><Link href="#" className="text-text-primary-gray">All Shoes</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Custom Shoes</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Jordan Shoes</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Running Shoes</Link></li>
+                </ul>
+              </div>
+
+              {/* Clothing */}
+              <div>
+                <h3 className="text-lg font-semibold mb-4 text-black">Clothing</h3>
+                <ul className="space-y-2 text-black">
+                  <li><Link href="#" className="text-text-primary-gray">All Clothing</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Modest Wear</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Hoodies & Pullovers</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Shirts & Tops</Link></li>
+                </ul>
+              </div>
+
+              {/* Kids */}
+              <div>
+                <h3 className="text-lg font-semibold mb-4 text-black">Kids'</h3>
+                <ul className="space-y-2 text-black">
+                  <li><Link href="#" className="text-text-primary-gray">Infant & Toddler Shoes</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Kids' Shoes</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Kids' Jordan Shoes</Link></li>
+                  <li><Link href="#" className="text-text-primary-gray">Kids' Basketball Shoes</Link></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      </section>
+      <Footer/>
     </div>
   );
 }
